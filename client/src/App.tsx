@@ -1,12 +1,13 @@
 import React from "react";
 import NavBar from "./components/NavBar";
+import Reports from "./components/Reports";
 
 function App() {
   return (
     <>
       <NavBar />
+      <Reports />
       <div className="container text-light">
-        <h4>Siste smørerapporter</h4>
         <div className="card bg-dark p-2 m-2">
           <span className="text-muted small mb-1">
             {new Date("17 Mar 2021").toLocaleString(undefined, {
