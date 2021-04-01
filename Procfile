@@ -1,1 +1,1 @@
-web serve -s client/build
+web cd server && node dist/index.js

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { FontAwesomeIcon as FaIcon } from "@fortawesome/react-fontawesome";
@@ -6,17 +6,22 @@ import {
   faSkiingNordic,
   faBan,
   faKey,
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { useAuth0 } from "@auth0/auth0-react";
+
+import ModalContext from "../ModalContext";
 
 const NavBar = () => {
   const { isLoading, isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
+  const { setShowModal } = useContext(ModalContext);
+
   return (
     <Navbar variant="dark" expand="md" collapseOnSelect>
       <Navbar.Brand href="/">
-        <div className="my-5">
-          <h1>Spikerfeste</h1> - fordi bakglatt er kjipern.
+        <div className="my-5 mx-sm-5">
+          <h1>Spikerfeste</h1> - fordi ingen liker bakglatt.
         </div>
       </Navbar.Brand>
       <Navbar.Toggle
@@ -31,7 +36,14 @@ const NavBar = () => {
               {isAuthenticated && (
                 <>
                   <Nav.Link
-                    className="btn btn-sm text-muted mr-2"
+                    className="btn btn-sm btn-outline-primary text-light mr-2"
+                    onClick={() => setShowModal(true)}
+                  >
+                    <FaIcon icon={faPlus} className="mr-2"></FaIcon>Ny
+                    smørerapport
+                  </Nav.Link>
+                  <Nav.Link
+                    className="btn btn-sm text-muted mr-2 mr-sm-5"
                     onClick={() => logout()}
                   >
                     <FaIcon

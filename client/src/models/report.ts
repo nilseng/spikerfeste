@@ -1,13 +1,18 @@
-export interface IReport {
+
+export type IReport = IReportMeta & IReportContent
+export interface IReportMeta {
     id: string;
+    createdAt?: number;
+    updatedAt?: number;
+    user?: IUser;
+    userId: string;
+}
+export interface IReportContent {
     title: string;
-    description: string[];
+    description: string;
     products: string[];
     rating: keyof typeof Rating;
     reportDate: number;
-    createdAt: number;
-    updatedAt: number;
-    user: IUser;
     area: string;
 }
 

@@ -8,7 +8,7 @@ import sslRedirect from 'heroku-ssl-redirect'
 import { connectToMongoDb } from "./database/databaseSetup"
 import imagesRouter from "./routes/images"
 import usersRouter from "./routes/users"
-import dataRouter from "./routes/route"
+import reportsRouter from "./routes/reports"
 
 dotenv.config()
 
@@ -29,7 +29,7 @@ app.use(morgan("tiny"))
 
 app.use("/api", imagesRouter)
 app.use("/api", usersRouter)
-app.use("/api", dataRouter)
+app.use("/api", reportsRouter)
 
 app.use(express.static(path.join(__dirname, '../../client/build')))
 
