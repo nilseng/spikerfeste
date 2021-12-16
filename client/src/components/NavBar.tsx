@@ -10,12 +10,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useAuth0 } from "@auth0/auth0-react";
 
-import ModalContext from "../ModalContext";
+import ModalContext, { ModalName } from "../ModalContext";
 
 const NavBar = () => {
   const { isLoading, isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
-  const { setShowModal } = useContext(ModalContext);
+  const { setModal } = useContext(ModalContext);
 
   return (
     <Navbar variant="dark" expand="md" collapseOnSelect>
@@ -36,8 +36,14 @@ const NavBar = () => {
               {isAuthenticated && (
                 <>
                   <Nav.Link
+                    className="btn btn-sm text-light mr-2"
+                    onClick={() => setModal(ModalName.ProductModal)}
+                  >
+                    <FaIcon icon={faPlus} className="mr-2"></FaIcon>Nytt produkt
+                  </Nav.Link>
+                  <Nav.Link
                     className="btn btn-sm btn-outline-primary text-light mr-2"
-                    onClick={() => setShowModal(true)}
+                    onClick={() => setModal(ModalName.ReportModal)}
                   >
                     <FaIcon icon={faPlus} className="mr-2"></FaIcon>Ny
                     smørerapport

@@ -7,7 +7,7 @@ import { faTrash, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { v4 as uuid } from "uuid";
 
 import { IReport, IReportContent } from "../models/report";
-import ModalContext from "../ModalContext";
+import ModalContext, { ModalName } from "../ModalContext";
 import { useAuth0 } from "@auth0/auth0-react";
 import Col from "react-bootstrap/esm/Col";
 import InputGroup from "react-bootstrap/esm/InputGroup";
@@ -24,7 +24,7 @@ const defaultContent: IReportContent = {
 };
 
 const ReportModal = () => {
-  const { showModal, setShowModal } = useContext(ModalContext);
+  const { modal, setModal } = useContext(ModalContext);
 
   const { user, getIdTokenClaims } = useAuth0();
 
@@ -36,7 +36,7 @@ const ReportModal = () => {
   });
 
   const handleHide = () => {
-    setShowModal(false);
+    setModal(undefined);
   };
 
   const handleInputChange = (e: any) => {
@@ -54,7 +54,7 @@ const ReportModal = () => {
   };
 
   return (
-    <Modal show={showModal} onHide={handleHide}>
+    <Modal show={modal === ModalName.ReportModal} onHide={handleHide}>
       <Modal.Body className="bg-dark text-light">
         <Form.Row className="mb-2">
           <Col sm={8}>

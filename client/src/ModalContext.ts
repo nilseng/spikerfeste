@@ -1,8 +1,13 @@
 import React from "react"
 
-const showModal: boolean = false
-const setShowModal: Function = () => { }
+export enum ModalName {
+    ReportModal,
+    ProductModal
+}
 
-const ModalContext = React.createContext({ showModal, setShowModal });
+const modal: string | undefined = undefined
+const setModal: Function = () => { }
+
+const ModalContext = React.createContext({ modal, setModal });
 
 export default ModalContext
